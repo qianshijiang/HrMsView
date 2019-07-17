@@ -12,6 +12,7 @@
     </el-form-item>
     <el-checkbox class="login_remember" v-model="checked"
                  label-position="left">记住密码</el-checkbox>
+    <el-tag class="weixin_mianmi" type="success" color="#fff">微信免密登录</el-tag>
     <el-form-item style="width: 100%">
       <el-button type="primary" style="width: 100%" @click="submitClick">登录</el-button>
     </el-form-item>
@@ -73,5 +74,8 @@
   .login_remember {
     margin: 0px 0px 35px 0px;
     text-align: left;
+  }
+  .weixin_mianmi{
+    margin: 0 30px;
   }
 </style>

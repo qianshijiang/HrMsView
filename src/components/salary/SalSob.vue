@@ -285,7 +285,8 @@
           medicalBase: '',
           medicalPer: '',
           accumulationFundBase: '',
-          accumulationFundPer: ''
+          accumulationFundPer: '',
+          updateDate:'',
         }
       };
     },
@@ -313,7 +314,8 @@
       },
       handleEdit(index, row) {
         this.dialogVisible = true;
-        row.createDate = new Date(row.createDate);
+        row.createDate = new Date(row.createDate).toISOString().slice(0,10);
+        row.updateDate = new Date().toISOString().slice(0,10);
         delete row.allSalary;
         this.salary = row;
       },
@@ -338,7 +340,7 @@
           _this.tableLoading = false;
           if (resp && resp.status == 200) {
             var data = resp.data;
-           
+
             _this.loadSalaryCfg();
           }
         });
@@ -347,13 +349,12 @@
         var _this = this;
         if (this.index == 7) {
           if(this.salary.createDate&&this.salary.basicSalary&&this.salary.trafficSalary&&this.salary.lunchSalary&&this.salary.bonus&&this.salary.pensionBase&&this.salary.pensionPer&&this.salary.medicalBase&&this.salary.medicalPer&&this.salary.accumulationFundBase&&this.salary.accumulationFundPer){
-          if (this.salary.id) {//更新
+            if (this.salary.id) {//更新
             _this.tableLoading = true;
             this.putRequest("/salary/sob/salary", this.salary).then(resp=> {
               _this.tableLoading = false;
               if (resp && resp.status == 200) {
                 var data = resp.data;
-                _
                 _this.dialogVisible = false;
                 _this.index = 0;
                 _this.loadSalaryCfg();
@@ -368,7 +369,7 @@
               this.postRequest("/salary/sob/salary", this.salary).then(resp=> {
                 if (resp && resp.status == 200) {
                   var data = resp.data;
-                  
+
                   _this.dialogVisible = false;
                   _this.index = 0;
                   _this.loadSalaryCfg();
