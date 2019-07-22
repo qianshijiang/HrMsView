@@ -53,6 +53,8 @@ export const formatRoutes = (routes)=> {
           require(['../components/statistics/' + component + '.vue'], resolve)
         } else if (component.startsWith("Sys")) {
           require(['../components/system/' + component + '.vue'], resolve)
+        }else if(component.startsWith("Duty")){
+          require(['../components/duty/' + component + '.vue'], resolve)
         }
       },
       name: name,

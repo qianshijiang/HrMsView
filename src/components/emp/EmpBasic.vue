@@ -272,7 +272,7 @@
             <el-table-column
               align="left"
               prop="tiptopDegree"
-              label="最高学历">
+              label="最高学历">l
             </el-table-column>
             <el-table-column
               fixed="right"
@@ -771,7 +771,7 @@
           _this.tableLoading = false;
           if (resp && resp.status == 200) {
             var data = resp.data;
-            
+
             _this.loadEmps();
           }
         })
@@ -824,7 +824,7 @@
                 _this.tableLoading = false;
                 if (resp && resp.status == 200) {
                   var data = resp.data;
-                  
+
                   _this.dialogVisible = false;
                   _this.emptyEmpData();
                   _this.loadEmps();
@@ -873,7 +873,6 @@
         })
       },
       showEditEmpView(row){
-        console.log(row)
         this.dialogTitle = "编辑员工";
         this.emp = row;
         this.emp.birthday = this.formatDate(row.birthday);
