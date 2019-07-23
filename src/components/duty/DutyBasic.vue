@@ -104,8 +104,8 @@
   export default{
     data(){
       return {
-        dutys:[], //日志数据
-        tableLoading:false,
+        dutys:[], //值班数据
+        tableLoading:true,
         totalCount: -1,//页码总数
         dutyTime:'', //值班日期
         empName:'',//员工姓名
@@ -120,11 +120,13 @@
         if(_this.dutyTime==null){
           _this.dutyTime = '';
         }
+        _this.tableLoading = true;
         let param = {dutyTime:this.dutyTime,empName:this.empName, workId:this.workId, currentPage:this.currentPage, pageSize:this.pageSize};
         this.postRequest("/duty/info/getListByPage",param).then(resp=> {
           if (resp && resp.status == 200) {
             let data = resp.data.data;
             _this.totalCount = resp.data.totalNum;
+            _this.tableLoading = false;
             _this.dutys = data;
 
           }
